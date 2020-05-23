@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Rock Paper Scissors</h1>
+            <app-score [state]="state"></app-score>
+            <br>
+            <app-button (stateChanger)="onWin($event)"></app-button>
+            <br>
+        </div>
+        <div class="col-xs-12">
+            <h4>The Computer Choise was: <strong>{{choise}}</strong> </h4>
+        </div>
+    </div>
+</div>
