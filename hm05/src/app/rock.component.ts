@@ -1,17 +1,14 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 @Component({
-  selector: 'rock',
-  template: `
-    <p>
-      rock-works
-    </p>
-  `,
-  styles: [],
+  selector: 'app-rock',
+  template: ` <button (click)="rockhandler()">Rock</button> `,
 })
-export class RockComponent implements OnInit {
-  
-  constructor() {}
-
-  ngOnInit(): void {}
+export class RockComponent {
+  @Output() userPlaying: EventEmitter<string>;
+  constructor() {
+    this.userPlaying = new EventEmitter();
+  }
+  rockhandler() {
+    this.userPlaying.emit('rock');
+  }
 }

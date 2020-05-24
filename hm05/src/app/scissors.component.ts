@@ -1,20 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-scissors',
-  template: `
-    <p>
-      scissors works!
-    </p>
-  `,
-  styles: [
-  ]
+  template: ` <button (click)="scissorsHandler()">Scissors</button> `,
 })
-export class ScissorsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class ScissorsComponent {
+  @Output() userPlaying: EventEmitter<string>;
+  constructor() {
+    this.userPlaying = new EventEmitter();
   }
-
+  scissorsHandler() {
+    this.userPlaying.emit('scissor');
+  }
 }

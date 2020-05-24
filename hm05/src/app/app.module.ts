@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { RockComponent } from './rock.component';
 import { PaperComponent } from './paper.component';
 import { ScissorsComponent } from './scissors.component';
+import { ScoreComponent } from './score.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RockComponent,
     PaperComponent,
-    ScissorsComponent
+    ScissorsComponent,
+    ScoreComponent
   ],
   imports: [
     BrowserModule

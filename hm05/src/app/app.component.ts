@@ -1,70 +1,51 @@
-import { Component, Input } from '@angular/core';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    Score: Won:{{ won }}/Lost:{{ lost }}
-    <br />
-    <!-- <rock></rock> -->
-    <button (click)="onChange('rock')">Rock</button>
-    <button (click)="onChange('paper')">Paper</button>
-    <button (click)="onChange('scissors')">Scissors</button>
+    <div>
+      <h2>Rock Paper Scissor Game</h2>
+      <score [display]="score"></score>
+      <app-rock (userPlaying)="userPlaying($event)"></app-rock>
+      <app-paper (userPlaying)="userPlaying($event)"></app-paper>
+      <app-scissors (userPlaying)="userPlaying($event)"></app-scissors>
+      <p>Computer choice was :{{ score.computer }}</p>
+    </div>
   `,
 })
 export class AppComponent {
-  public score: { w: number; l: number; computer: string };
-  won = 0;
-  lost = 0;
-  public computerResult: string;
-  public userResult: string;
-  constructor() {
-    // this.score.w = 0;
-    // this.score.l = 0;
+  public score: { w: number; l: number; computer: string } = {
+    w: 0,
+    l: 0,
+    computer: '',
+  };
+  public player: string;
+  userPlaying(e): void {
+    console.log(e);
+    this.player = e;
+    this.computerRandomChoice();
+    this.result();
   }
-
-  onChange(action: string): void {
-    this.userResult = action;
-    console.log(this.userResult, 'userResult');
-
-    this.computerResult = this.computer();
-    console.log(this.computerResult, 'computerResult');
-    this.calculateWinner();
+  computerRandomChoice(): void {
+    const randomNumbers = Math.floor(Math.random() * 3);
+    console.log(Choices[randomNumbers]);
+    this.score.computer = Choices[randomNumbers];
   }
-  computer(): string {
-    const randomNum = Math.floor(Math.random() * 3);
-    const options: string[] = ['rock', 'paper', 'scissors'];
-    console.log(options[randomNum], 'enummm');
-    return state[randomNum];
-  }
-  calculateWinner(): void {
-    if (this.userResult != this.computerResult) {
-      if (this.userResult === 'rock' && this.computerResult === 'scissors') {
-        this.won++;
-        // let won = this.score.w++;
-        // console.log(this.score.w);
-      } else if (
-        this.userResult === 'paper' &&
-        this.computerResult === 'rock'
-      ) {
-        this.won++;
-        // let won = this.score.w++;
-      } else if (
-        this.userResult === 'scissors' &&
-        this.computerResult === 'paper'
-      ) {
-        this.won++;
-        // let won = this.score.w++;
+  result(): void {
+    if (this.player !== this.score.computer) {
+      if (this.player === 'rock' && this.score.computer === 'scissor') {
+        this.score = Object.assign({}, this.score, { w: this.score.w++ });
+      } else if (this.player === 'paper' && this.score.computer === 'rock') {
+        this.score = Object.assign({}, this.score, { w: this.score.w++ });
+      } else if (this.player === 'scissor' && this.score.computer === 'paper') {
+        this.score = Object.assign({}, this.score, { w: this.score.w++ });
       } else {
-        this.lost++;
-        // let lost = this.score.l++;
+        this.score = Object.assign({}, this.score, { l: this.score.l++ });
       }
     }
   }
 }
-
-enum state {
+enum Choices {
   rock,
   paper,
   scissors,
 }
-// /Users/simon/Documents/CS569 Angular/Demos/changeDetection/CS569-Homework-05
