@@ -23,6 +23,7 @@ export class AppComponent {
     const playerPick = e.target.innerHTML
     if (playerPick == compPick) {
        alert("its a draw!")
+       console.log("its a draw!")
      
     }
     else if (playerPick !== compPick && compPick == "Scissor") {
