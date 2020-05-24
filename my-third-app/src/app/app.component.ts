@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 export interface IState {
   state: { w: number, l: number, computer: string }
@@ -21,44 +21,44 @@ export enum ActionType {
   <rpsGame (userEmit)="userHanlder($event)" ></rpsGame>
 
   `,
-
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements IState {
   public ActionType = ActionType;
-  public state = { w: 0, l: 0, computer:null }
+  public state = { w: 0, l: 0, computer: null }
   public user: String
 
-  
+
 
   userHanlder(userInput: String): void {
     this.user = userInput
     this.computerGame()
-    this.rpsGame()
+    this.rpsGame(this.state)
+
   }
 
   computerGame() {
     const computerInput = Math.floor(Math.random() * 3)
+
     this.state.computer = ActionType[computerInput]
+
   }
-  rpsGame(): void {
-    switch (this.user + this.state.computer) {
-      case 'RockScissors':
-      case 'PaperRock':
-      case 'ScissorsPaper':
-        this.state.w++
-        break;
-      case 'RockPaper':
-      case 'ScissorsRock':
-      case 'PaperScissors':
-        this.state.l++
-        break;
-      case 'RockRock':
-      case 'ScissorsScissors':
-      case 'PaperPaper':
-        this.state.l + 0
-        this.state.w + 0
-        break;
+
+
+  rpsGame(prevState): any {
+
+    if (this.user + this.state.computer == 'RockScissors' ||
+      this.user + this.state.computer == 'PaperRock' ||
+      this.user + this.state.computer == 'ScissorsPaper') {
+      return  { ...prevState, w:this.state.w++}
+    } else if (this.user + this.state.computer == 'RockPaper' ||
+      this.user + this.state.computer == 'ScissorsRock' ||
+      this.user + this.state.computer == 'PaperScissors') {
+        return  { ...prevState,l:this.state.l++}
+    } else {
+      return  { ...prevState, w:this.state.w+0,l:this.state.l+0, }
     }
+
   }
 
 }

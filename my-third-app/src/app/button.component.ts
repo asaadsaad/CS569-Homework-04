@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Output} from '@angular/core';
-import { OutgoingMessage } from 'http';
 
 @Component({
   selector: 'rpsGame',
