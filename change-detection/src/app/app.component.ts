@@ -7,7 +7,8 @@ import { State } from './stateInterface';
   template: `
     <div class="box">
       <p>Rock Paper Scissors</p>
-      <app-score [win]="win" [loss]="loss"></app-score><br />
+      <app-score [win]="this.state.win" [loss]="this.state.loss"></app-score
+      ><br />
       <p>
         <app-button
           [state]="state"
@@ -63,8 +64,8 @@ export class AppComponent {
     loss: 0,
     computer: '',
   };
-  win = this.state.win;
-  loss = this.state.loss;
+  // win = this.state.win;
+  // loss = this.state.loss;
 
   randomChoice(choice) {
     const computerChoice = choice[Math.floor(3 * Math.random())];
