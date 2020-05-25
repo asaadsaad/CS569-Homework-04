@@ -1,18 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectionStrategy,
+  Input,
+} from '@angular/core';
 
 @Component({
   selector: 'app-score',
   templateUrl: './score.component.html',
-  styles: [
-  ],
-  inputs:['win','loss']
-})
-export class ScoreComponent implements OnInit {
-win:number;
-loss:number;
-  constructor() { }
+  styles: [],
+  inputs: ['win', 'loss'],
 
-  ngOnInit(): void {
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ScoreComponent implements OnChanges {
+  win: number;
+  loss: number;
+  // @Input() scoreState:{w:number,l:number,computer:string}
+  constructor() {}
+  ngOnChanges(changes) {
+    // console.log(changes.scoreState);
+    console.log(
+      `form Score ngOnchange : \n win: ${this.win}, loss:${this.loss}`
+    );
   }
 
+  ngOnInit(): void {}
 }

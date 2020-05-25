@@ -7,11 +7,20 @@ import { Choices } from './button/button.component';
   selector: 'app-root',
   template: ` <div class="container">
     <h1>Rock Paper Scissors</h1>
-    <app-score [win]="state.w" [loss]="state.l"></app-score>
-    <app-button (userChoice)="choice($event)"></app-button>
-    <div></div>
+    <br>
 
-    <h4>Computer choice was: {{ state.computer }}</h4>
+    <app-score [win]="state.w" [loss]="state.l"></app-score>
+    <br>
+
+    <app-button (userChoice)="choice($event)"></app-button>
+    <br>
+    <label for="formGroupExampleInput">Your Choice : {{userChoie}}</label> <br>
+    <label for="formGroupExampleInput">Computer Choice:{{state.computer}} </label>
+
+    <div>
+      <h4>Computer choice was: {{ prevComp }}</h4>
+    </div>
+
   </div>`,
   styleUrls: ['./app.component.css'],
 })
@@ -26,11 +35,13 @@ export class AppComponent {
     l: 0,
     computer: '',
   };
+  prevComp: string = '';
+  userChoie:string =''
 
   choice(e: string) {
-    const userChoie = e;
+     this.userChoie = e;
     const randomChocie = Math.floor(Math.random() * 3);
-
+    this.prevComp = this.state.computer;
     this.state = { ...this.state, computer: this.ButtonChoices[randomChocie] };
 
     this.whosWinner(e);

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 
 
 export enum Choices{
@@ -17,7 +17,7 @@ export enum Choices{
 })
 
 
-export class ButtonComponent implements OnInit {
+export class ButtonComponent implements OnChanges {
 
   public ButtonChoices= Choices;
   public userChoice:EventEmitter<string>
@@ -26,10 +26,14 @@ export class ButtonComponent implements OnInit {
   constructor() { 
     this.userChoice =new EventEmitter()
   }
+  ngOnChanges(changes) {
+  // throw new Error("Method not implemented.");
+  console.log(`what is here ..`);
+  
+  }
 
   ngOnInit(): void {
   }
-
   onUserChoice(e){
     console.log(e.target.innerHTML);
 
