@@ -21,7 +21,7 @@ export enum ActionType {
   <rpsGame (userEmit)="userHanlder($event)" ></rpsGame>
 
   `,
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements IState {
   public ActionType = ActionType;
@@ -31,34 +31,43 @@ export class AppComponent implements IState {
 
 
   userHanlder(userInput: String): void {
+
     this.user = userInput
     this.computerGame()
-    this.rpsGame(this.state)
+    this.rpsGame()
+
 
   }
 
   computerGame() {
     const computerInput = Math.floor(Math.random() * 3)
-
-    this.state.computer = ActionType[computerInput]
+    this.state = { ...this.state, computer: ActionType[computerInput] }
 
   }
 
 
-  rpsGame(prevState): any {
+  rpsGame() {
 
-    if (this.user + this.state.computer == 'RockScissors' ||
-      this.user + this.state.computer == 'PaperRock' ||
-      this.user + this.state.computer == 'ScissorsPaper') {
-      return  { ...prevState, w:this.state.w++}
-    } else if (this.user + this.state.computer == 'RockPaper' ||
-      this.user + this.state.computer == 'ScissorsRock' ||
-      this.user + this.state.computer == 'PaperScissors') {
-        return  { ...prevState,l:this.state.l++}
-    } else {
-      return  { ...prevState, w:this.state.w+0,l:this.state.l+0, }
+
+    switch (this.user + this.state.computer) {
+
+      case 'PaperRock':
+      case 'RockScissors':
+      case 'ScissorsPaper':
+
+        this.state = { ...this.state, w: ++this.state.w }
+
+        break;
+
+      case 'RockPaper':
+      case 'ScissorsRock':
+      case 'PaperScissors':
+
+        this.state = { ...this.state, l: ++this.state.l }
+        
+        break;
+
     }
-
   }
 
 }

@@ -23,8 +23,12 @@ export class ScoreComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     for (let i in changes) {
       let change = changes["computer"];
-      let prevouse = change.previousValue
-      this.computerPrev = prevouse;
+      if(change){
+        let prevouse = change.previousValue
+        this.computerPrev = prevouse;
+      }
+     
+    
 
 
 
