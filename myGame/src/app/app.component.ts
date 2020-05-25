@@ -7,28 +7,40 @@ import { Component } from '@angular/core';
   <h3> Game Zone </h3>
   <h3> Score: Won 5 :) /Lost 2 ('_')</h3>
     
-  Rock: <button (click)="increment($event)">Rock</button>
-  {{counterValue}}
-  Paper: <button (click)="decrement($event)">Paper</button>
-  Scissors:<button (click)="decrement($event)">Scissors</button>
+  Rock: <button (click)="winnerHandler($event)">Rock</button>
+  {{won}}
+  Paper: <button (click)="paperhandler($event)">Paper</button>
+  Scissors:<button (click)="losserHandler($event)">Scissors</button>
+  {{lost}}
+  <p>Computer choise was:paper</p>
 `,
   styles: [
     `h1 {color: brown}
-    h3 {color: purple}`
+    h3 {color: purple}
+    p {color:orange}`
   ]
 })
 export class AppComponent {
   //title = 'myGame';
-  counterValue: number;
+  //counterValue: number;
+   won: number;
+   lost: number;
+   computer: string;
   constructor() {
-    this.counterValue = 0;
+    this.won = 0;
+    this.lost = 0;
+    this.computer = '';
   }
-  increment(e) {
-    this.counterValue = this.counterValue + 1;
+  winnerHandler(e) {
+    this.won = this.won + 5;
     return false;
   }
-  decrement(e) {
-    this.counterValue = this.counterValue - 1;
+  paperhandler(e) {
+    this.computer = "commputer choies!";
+    return false;
+  }
+  losserHandler(e) {
+    this.lost = this.lost + 2;
     return false;
   }
 }
