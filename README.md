@@ -1,4 +1,6 @@
-# CS569 Homework 05
+# CS569 Homework 04
+## Angular Lifecycle Hooks
+Create a new Angular project with a `Child` component. Each component has Implement all lifecycle hooks
 ## Angular Change Detection
 ## FORK THE REPO FIRST, THEN CLONE YOUR LOCAL COPY
 Your will build a Rock-Paper-Scissors game application with Angular framework, the application has the following tree structure:  
