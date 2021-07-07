@@ -1,0 +1,15 @@
+<button id="btn">wait a bit</button>
+
+<script>
+  var btn = document.getElementById("btn");
+  function myCallBack(oldTime) {
+    var times = "Old time: " + oldTime + "New time: " + Date();
+    alert(times);
+  }
+  var loadTime = Date();
+
+  btn.onmouseover = myCallBack(loadTime);
+  btn.onclick = function () {
+    myCallBack(loadTime);
+  };
+</script>
