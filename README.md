@@ -11,7 +11,7 @@ Your will build a Rock-Paper-Scissors game with Angular framework, the applicati
 * Make the necessary changes so only components that receive new state will be checked and re-rendered.
   
 <p align="center">
-  <img src="./app-snapshot.png" />
+  <img src="./snapshot.png" />
 </p>
 
 Here is something to help you with the game logic:
