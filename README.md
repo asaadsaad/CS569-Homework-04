@@ -1,15 +1,51 @@
-# CS569 Homework 04
-## Angular Change Detection
-Your will build a Rock-Paper-Scissors game application with Angular framework, the application has the following components:  
+# CS569 Homework
+Your will build a Rock-Paper-Scissors game with Angular framework, the application has the following components:  
 * AppComponent (root)
-  * ButtonComponent (reusable)
-  * ScoreComponent (reusable)
+  * ButtonsComponent
+  * ScoreboardComponent
+  * CheatingComponent
     
 ### Application Specifications
-* The root component will have the following state: `{w: number, l: number, computer: string}` to track number of wins/losses, and hold the computer choice. Score will be displayed using the reusable score component. Implement all actions in `AppComponent`, treat the state as immutable object. Display the previous computer choice after every state change.
-* Game choices should be declared as `enum`.  Display all three game choices using three reusable button components. Pass the button label and function that needs to be triggered on click event.
-* Implement `OnChanges` and `DoCheck` interfaces for both `button` and `score` components. Notice when each hook is triggered.
+* The root component contains the application state: `{winCount: number, lossCount: number, tieCount: number, computerChoice: string}` to track number of wins/losses/ties, and the computer choice. 
+* Game choices should be declared as `enum`.
+* Make the necessary changes so only components that receive new state will be checked and re-rendered.
   
 <p align="center">
   <img src="./app-snapshot.png" />
 </p>
+
+Here is something to help you with the game logic:
+```javascript
+function compare(playerChoice, computerChoice) {
+
+    //Checking for a tie
+    if (playerChoice === computerChoice) {
+        return "It is a tie";
+    }
+
+    //Check for Rock
+    if (playerChoice === "rock") {
+        if (computerChoice === "scissors") {
+            return "Player Wins";
+        } else {
+            return "Computer Wins";
+        }
+    }
+    //Check for Paper
+    if (playerChoice === "paper") {
+        if (computerChoice === "scissors") {
+            return "Computer Wins";
+        } else {
+            return "Player Wins";
+        }
+    }
+    //Check for Scissors
+    if (playerChoice === "scissors") {
+        if (computerChoice === "rock") {
+            return "Computer Wins";
+        } else {
+            return "Player Wins";
+        }
+    }
+}
+```
