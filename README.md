@@ -1,5 +1,5 @@
 # CS569 Homework
-Your will build a Rock-Paper-Scissors game with Angular framework, the application has the following components:  
+Your will build a Rock-Paper-Scissors game with Angular framework, the application has the following components rendered in the following structure:  
 * AppComponent (root)
   * ScoreboardComponent
   * ButtonsComponent
