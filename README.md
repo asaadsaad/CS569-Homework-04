@@ -51,5 +51,6 @@ function compare(playerChoice, computerChoice) {
 ```
 To get a random value from an enum in TypeScript:
 ```typescript
-const randomValue = MyEnum[Math.floor(Math.random() * MyEnum.values.length)];
+const key = Math.floor(Math.random() * Object.keys(MyEnum).length / 2);
+return MyEnum[key];
 ```
