@@ -49,7 +49,7 @@ function compare(playerChoice, computerChoice) {
     }
 }
 ```
-To pick a random number from 0 to 2 in JavaScript:
-```javascript
-const randomNumber = Math.floor(Math.random() * 3);
+To get a random value from an enum in TypeScript:
+```typescript
+const randomValue = MyEnum[Math.floor(Math.random() * MyEnum.values.length)];
 ```
