@@ -49,3 +49,7 @@ function compare(playerChoice, computerChoice) {
     }
 }
 ```
+The following method selects a random value from an array:
+```javascript
+const randomValue = Math.floor(Math.random() * array.length);
+```
