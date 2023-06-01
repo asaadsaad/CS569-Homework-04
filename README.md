@@ -49,7 +49,7 @@ function compare(playerChoice, computerChoice) {
     }
 }
 ```
-The following method selects a random value from an array:
+To pick a random number from 0 to 2 in JavaScript:
 ```javascript
-const randomValue = Math.floor(Math.random() * array.length);
+const randomNumber = Math.floor(Math.random() * 3);
 ```
