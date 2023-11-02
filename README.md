@@ -6,9 +6,9 @@ Your will build a Rock-Paper-Scissors game with Angular framework, the applicati
   * CheatingComponent
     
 ### Application Specifications
-* The root component contains the application state: `{winCount: number, lossCount: number, tieCount: number, computerChoice: string}` to track number of wins/losses/ties, and the computer choice. 
-* Game choices should be declared as `enum`.
-* Make the necessary changes so only components that receive new state will be checked and re-rendered.
+* The root AppComponent contains the application state: `{winCount: number, lossCount: number, tieCount: number, computerChoice: string}` to track number of wins/losses/ties, and the computer choice. 
+* Declare the game choices (Rock, Paper, Scissors) as `enum`. 
+* Optimize the change detection logic when applicable.
   
 <p align="center">
   <img src="./snapshot.png" />
