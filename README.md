@@ -15,7 +15,7 @@ Your will build a Rock-Paper-Scissors game with Angular framework, the applicati
   <img src="./layout.png" />
 </p>
 
-Here is something to help you with the game logic:
+Here is something to help you with the game logic, feel free to change it for your custom solution:
 ```javascript
 function compare(playerChoice, computerChoice) {
 
