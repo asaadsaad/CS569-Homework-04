@@ -11,7 +11,7 @@ Your will build a Rock-Paper-Scissors game with Angular framework, the applicati
 * Optimize the change detection logic when applicable.
   
 <p align="center">
-  <img src="./snapshot.png" />
+  <img src="./layout.png" />
 </p>
 
 Here is something to help you with the game logic:
