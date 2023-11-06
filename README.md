@@ -9,7 +9,7 @@ Your will build a Rock-Paper-Scissors game with Angular framework, the applicati
 ### Application Specifications
 * The root AppComponent contains the application state: `{winCount: number, lossCount: number, tieCount: number, computerChoice: string}` to track number of wins/losses/ties, and the computer choice. Also history state: `[{human: string, computer: string, result: string}]`.
 * Declare the game choices (Rock, Paper, Scissors) as `enum`. 
-* Optimize the change detection logic when applicable.
+* Optimize the change detection logic when applicable. Can we apply `onPush` strategy to all of the components?
   
 <p align="center">
   <img src="./layout.png" />
